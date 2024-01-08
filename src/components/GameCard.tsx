@@ -1,16 +1,18 @@
 import React from "react";
 
-import {Card, CardBody, Heading, Image} from "@chakra-ui/react";
+import {Card, CardBody, Heading, HStack, Image} from "@chakra-ui/react";
 
 import {Game} from "../models/GameUtils.ts";
 import PlatformIconList from "./PlatformIconList.tsx";
+import CriticScore from "./CriticScore.tsx";
 
 const GameCard: React.FC<{ game: Game }> = ({
                                                 game:
                                                     {
                                                         background_image,
                                                         name,
-                                                        parent_platforms
+                                                        parent_platforms,
+                                                        metacritic
                                                     }
                                             }) => {
 
@@ -19,7 +21,10 @@ const GameCard: React.FC<{ game: Game }> = ({
             <Image src={background_image}/>
             <CardBody>
                 <Heading fontSize='2xl'>{name}</Heading>
-                <PlatformIconList platforms={parent_platforms.map(({platform}) => platform)} />
+                <HStack justifyContent='space-between'>
+                    <PlatformIconList platforms={parent_platforms.map(({platform}) => platform)}/>
+                    <CriticScore score={metacritic}/>
+                </HStack>
             </CardBody>
         </Card>
     );
