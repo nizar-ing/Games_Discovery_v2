@@ -18,7 +18,7 @@ const GameCard: React.FC<{ game: Game }> = ({
                                             }) => {
 
     return (
-        <Card borderRadius={10} overflow='hidden'>
+        <Card width='300px' borderRadius={10} overflow='hidden'>
             <Image src={getCroppedImageUrl(background_image)}/>
             <CardBody>
                 <Heading fontSize='2xl'>{name}</Heading>
