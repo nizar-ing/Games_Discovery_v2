@@ -12,7 +12,7 @@ const PlatformSelector: React.FC<{selectedPlatform: Platform | null, onSelectPla
         <Menu>
             <MenuButton as={Button} rightIcon={<BsChevronDown />}>
                 {
-                    selectedPlatform ? selectedPlatform.name : 'Platforms'
+                     selectedPlatform?.name || 'Platforms'
                 }
             </MenuButton>
             <MenuList>
