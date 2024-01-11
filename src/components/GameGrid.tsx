@@ -4,14 +4,13 @@ import useGames from "../hooks/useGames.ts";
 import GameCard from "./GameCard.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
-import {Genre} from "../models/GenreUtils.ts";
-import {Platform} from "../models/GameUtils.ts";
+import {GameQuery} from "../query-objects/GameQuery.ts";
 
 
 
-const GameGrid: React.FC<{selectedGenre: Genre | null, selectedPlatform: Platform | null}> = ({selectedGenre, selectedPlatform}) => {
+const GameGrid: React.FC<{gameQuery: GameQuery}> = ({gameQuery}) => {
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
+    const {data, error, isLoading} = useGames(gameQuery);
     return (
         <>
             {error && <Text>{error}</Text>}

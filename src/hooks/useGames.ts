@@ -1,9 +1,9 @@
 
-import {Game, Platform} from "../models/GameUtils.ts";
+import {Game} from "../models/GameUtils.ts";
 import useData from "./useData.ts";
-import {Genre} from "../models/GenreUtils.ts";
+import {GameQuery} from "../query-objects/GameQuery.ts";
 
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useData<Game>('/games',
-    {params: {genres: selectedGenre?.id, platforms: selectedPlatform?.id}}, [selectedGenre?.id, selectedPlatform?.id]);
+const useGames = (gameQuery: GameQuery) => useData<Game>('/games',
+    {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id}}, [gameQuery]);
 
 export default useGames;
