@@ -5,12 +5,13 @@ import GameCard from "./GameCard.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
 import {Genre} from "../models/GenreUtils.ts";
+import {Platform} from "../models/GameUtils.ts";
 
 
 
-const GameGrid: React.FC<{selectedGenre: Genre | null}> = ({selectedGenre}) => {
+const GameGrid: React.FC<{selectedGenre: Genre | null, selectedPlatform: Platform | null}> = ({selectedGenre, selectedPlatform}) => {
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const {data, error, isLoading} = useGames(selectedGenre);
+    const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
     return (
         <>
             {error && <Text>{error}</Text>}
