@@ -20,7 +20,7 @@ const GameCard: React.FC<{ game: Game }> = ({
                                             }) => {
 
     return (
-        <Card>
+        <Card width='310px' height='400px'>
             <Image src={getCroppedImageUrl(background_image)}/>
             <CardBody>
                 <HStack justifyContent='space-between' marginBottom={3}>
