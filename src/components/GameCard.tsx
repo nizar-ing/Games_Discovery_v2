@@ -6,6 +6,7 @@ import {Game} from "../models/GameUtils.ts";
 import PlatformIconList from "./PlatformIconList.tsx";
 import CriticScore from "./CriticScore.tsx";
 import getCroppedImageUrl from "../services/image-url.ts";
+import Emoji from "./Emoji.tsx";
 
 const GameCard: React.FC<{ game: Game }> = ({
                                                 game:
@@ -13,7 +14,8 @@ const GameCard: React.FC<{ game: Game }> = ({
                                                         background_image,
                                                         name,
                                                         parent_platforms,
-                                                        metacritic
+                                                        metacritic,
+                                                        rating_top
                                                     }
                                             }) => {
 
@@ -25,7 +27,7 @@ const GameCard: React.FC<{ game: Game }> = ({
                     <PlatformIconList platforms={parent_platforms.map(({platform}) => platform)}/>
                     <CriticScore score={metacritic}/>
                 </HStack>
-                <Heading fontSize='2xl'>{name}</Heading>
+                <Heading fontSize='2xl'>{name} <Emoji rating={rating_top} /></Heading>
             </CardBody>
         </Card>
     );
