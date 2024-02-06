@@ -1,10 +1,11 @@
 import React from "react";
-import {Box, Button, SimpleGrid, Text} from "@chakra-ui/react";
+import {SimpleGrid, Spinner, Text} from "@chakra-ui/react";
 import useGames from "../hooks/useGames.ts";
 import GameCard from "./GameCard.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
 import {GameQuery} from "../query-objects/GameQuery.ts";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 
 const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
@@ -13,15 +14,24 @@ const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
         data,
         error,
         isLoading,
-        isFetchingNextPage,
+        /*isFetchingNextPage,*/
         fetchNextPage,
         hasNextPage
     } = useGames(gameQuery);
+    const fetchedGamesCount = data?.pages.reduce(
+        (total, page) => total + page.results.length, 0
+    ) || 0;
 
     if (error) return <Text>{error.message}</Text>;
+
     return (
-        <Box padding='10px'>
-            <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 4}} spacing={6}>
+        <InfiniteScroll
+            next={() => fetchNextPage()}
+            hasMore={!!hasNextPage}
+            loader={<Spinner/>}
+            dataLength={fetchedGamesCount}
+        >
+            <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 4}} spacing={6} padding='10px'>
                 {
                     isLoading && skeletons.map(((skeleton) => (<GameCardContainer key={skeleton}>
                         <GameCardSkeleton/>
@@ -37,11 +47,12 @@ const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
                     </React.Fragment>)
                 }
             </SimpleGrid>
-            {hasNextPage &&
+        </InfiniteScroll>
+            /*hasNextPage &&
                 <Button marginY={5} onClick={() => fetchNextPage()}>
                     {isFetchingNextPage ? 'Loading...' : 'Load More'}
-                </Button>}
-        </Box>
+                </Button>*/
+
     );
 };
 
