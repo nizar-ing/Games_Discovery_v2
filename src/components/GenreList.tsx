@@ -16,7 +16,7 @@ const GenreList: React.FC<{ onSelectedGenre: (genre: Genre) => void, genreId: nu
             <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
             <List>
                 {
-                    data.map((genre) => (<ListItem key={genre.id} paddingY='6px'>
+                    data?.results.map((genre) => (<ListItem key={genre.id} paddingY='6px'>
                             <HStack>
                                 <Image boxSize='32px' objectFit='cover' borderRadius={8}
                                        src={getCroppedImageUrl(genre.image_background)}/>
