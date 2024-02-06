@@ -27,7 +27,9 @@ const GameCard: React.FC<{ game: Game }> = ({
                     <PlatformIconList platforms={parent_platforms.map(({platform}) => platform)}/>
                     <CriticScore score={metacritic}/>
                 </HStack>
-                <Heading fontSize='2xl'>{name} <Emoji rating={rating_top} /></Heading>
+                <Heading fontSize='2xl'>
+                    {name} <Emoji rating={rating_top}/>
+                </Heading>
             </CardBody>
         </Card>
     );

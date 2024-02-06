@@ -13,7 +13,6 @@ const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
 
     if (error) return <Text>{error}</Text>;
     return (
-
         <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 4}} spacing={6} padding='10px'>
             {
                 isLoading && skeletons.map(((skeleton) => (<GameCardContainer key={skeleton}>
@@ -26,7 +25,6 @@ const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
                 </GameCardContainer>))
             }
         </SimpleGrid>
-
     );
 };
 
