@@ -3,10 +3,11 @@ import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
 import {BsChevronDown} from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms.ts";
 import {Platform} from "../models/GameUtils.ts";
+import usePlatform from "../hooks/usePlatform.ts";
 
 const PlatformSelector: React.FC<{selectedPlatformId?: number, onSelectPlatform: (platform: Platform) => void}> = ({selectedPlatformId ,onSelectPlatform}) => {
     const {data, error} = usePlatforms();
-    const platform = data?.results.find((p) => p.id === selectedPlatformId);
+    const platform = usePlatform(selectedPlatformId);
     if(error) return null;
     return (
         <Menu>
