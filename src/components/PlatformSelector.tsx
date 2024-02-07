@@ -4,15 +4,15 @@ import {BsChevronDown} from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms.ts";
 import {Platform} from "../models/GameUtils.ts";
 
-const PlatformSelector: React.FC<{selectedPlatform: Platform | null, onSelectPlatform: (platform: Platform) => void}> = ({selectedPlatform ,onSelectPlatform}) => {
+const PlatformSelector: React.FC<{selectedPlatformId?: number, onSelectPlatform: (platform: Platform) => void}> = ({selectedPlatformId ,onSelectPlatform}) => {
     const {data, error} = usePlatforms();
-
+    const platform = data?.results.find((p) => p.id === selectedPlatformId);
     if(error) return null;
     return (
         <Menu>
             <MenuButton as={Button} rightIcon={<BsChevronDown />}>
                 {
-                     selectedPlatform?.name || 'Platforms'
+                     platform?.name || 'Platforms'
                 }
             </MenuButton>
             <MenuList>
