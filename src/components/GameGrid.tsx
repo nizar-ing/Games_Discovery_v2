@@ -4,11 +4,10 @@ import useGames from "../hooks/useGames.ts";
 import GameCard from "./GameCard.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
-import {GameQuery} from "../query-objects/GameQuery.ts";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
-const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
+const GameGrid = () => {
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const {
         data,
@@ -17,7 +16,7 @@ const GameGrid: React.FC<{ gameQuery: GameQuery }> = ({gameQuery}) => {
         /*isFetchingNextPage,*/
         fetchNextPage,
         hasNextPage
-    } = useGames(gameQuery);
+    } = useGames();
     const fetchedGamesCount = data?.pages.reduce(
         (total, page) => total + page.results.length, 0
     ) || 0;

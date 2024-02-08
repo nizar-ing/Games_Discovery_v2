@@ -5,10 +5,12 @@ import {Game} from "../models/GameUtils.ts";
 import {GameQuery} from "../query-objects/GameQuery.ts";
 import ApiClient from "../services/api-client.ts";
 import {FetchResponse} from "../models/FetchResponse.ts";
+import useGameQueryStore from "../store.ts";
 
 const apiClient = new ApiClient<Game>('/games');
-const useGames = (gameQuery: GameQuery) =>
-    useInfiniteQuery<FetchResponse<Game>, Error>({
+const useGames = () => {
+    const gameQuery = useGameQueryStore((s) => s.gameQuery);
+    return useInfiniteQuery<FetchResponse<Game>, Error>({
         queryKey: ['games', gameQuery],
         queryFn: ({pageParam}) => apiClient.getAll({
             params: {
@@ -24,4 +26,5 @@ const useGames = (gameQuery: GameQuery) =>
         },
         staleTime: ms('24h') // 24 hours
     });
+}
 export default useGames;
