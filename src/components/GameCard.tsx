@@ -2,12 +2,12 @@ import React from "react";
 
 import {Card, CardBody, Heading, HStack, Image} from "@chakra-ui/react";
 
-import {Game} from "../models/GameUtils.ts";
 import PlatformIconList from "./PlatformIconList.tsx";
 import CriticScore from "./CriticScore.tsx";
 import getCroppedImageUrl from "../services/image-url.ts";
 import Emoji from "./Emoji.tsx";
 import {Link} from "react-router-dom";
+import Game from "../models/Game.ts";
 
 const GameCard: React.FC<{ game: Game }> = ({
                                                 game:

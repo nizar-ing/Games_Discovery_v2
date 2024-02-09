@@ -1,8 +1,8 @@
 import React from "react";
-import {Game} from "../models/GameUtils.ts";
 import DefinitionItem from "./DefinitionItem.tsx";
 import {SimpleGrid, Text} from "@chakra-ui/react";
 import CriticScore from "./CriticScore.tsx";
+import Game from "../models/Game.ts";
 
 const GameAttributes: React.FC<{game: Game}> = ({game}) => {
     return (

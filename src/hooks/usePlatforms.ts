@@ -2,8 +2,8 @@ import {useQuery} from "@tanstack/react-query";
 import ms from 'ms';
 
 import ApiClient from "../services/api-client";
-import {Platform} from "../models/GameUtils";
 import platforms from "../data/platforms.ts";
+import Platform from "../models/Platform.ts";
 
 
 const apiClient = new ApiClient<Platform>('/platforms/lists/parents');

@@ -1,11 +1,11 @@
 import React from 'react';
-import {Platform} from "../models/GameUtils.ts";
 import {HStack, Icon} from "@chakra-ui/react";
 import {FaAndroid, FaApple, FaLinux, FaPlaystation, FaWindows, FaXbox} from "react-icons/fa";
 import {MdPhoneIphone} from "react-icons/md";
 import {BsGlobe} from "react-icons/bs";
 import {SiNintendo} from "react-icons/si";
 import {IconType} from "react-icons";
+import Platform from "../models/Platform.ts";
 
 const PlatformIconList: React.FC<{platforms: Platform[]}> = ({platforms}) => {
     const iconMap : { [key: string]: IconType } = {

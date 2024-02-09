@@ -2,6 +2,7 @@ import {Button, Heading, HStack, Image, List, ListItem, Spinner} from "@chakra-u
 import getCroppedImageUrl from "../services/image-url.ts";;
 import useGameQueryStore from "../store.ts";
 import useGenres from "../hooks/useGenres.ts";
+import Genre from "../models/Genre.ts";
 
 const GenreList = () => {
     const {data, isLoading, error} = useGenres();
@@ -14,7 +15,7 @@ const GenreList = () => {
             <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
             <List>
                 {
-                    data?.results.map((genre) => (<ListItem key={genre.id} paddingY='6px'>
+                    data?.results.map((genre: Genre) => (<ListItem key={genre.id} paddingY='6px'>
                             <HStack>
                                 <Image boxSize='32px' objectFit='cover' borderRadius={8}
                                        src={getCroppedImageUrl(genre.image_background)}/>
