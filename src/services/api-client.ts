@@ -12,8 +12,11 @@ class ApiClient<T> {
     constructor(private endpoint: string) {}
 
     getAll = async (config?: AxiosRequestConfig):  Promise<FetchResponse<T>> => {
-        return axiosInstance.get<FetchResponse<T>>(this.endpoint, config)
+        return  axiosInstance.get<FetchResponse<T>>(this.endpoint, config)
             .then((response) => response.data);
+    }
+    get = async (id: number | string) => {
+        return  axiosInstance.get<T>(this.endpoint + '/' + id).then((response) => response.data);
     }
 }
 

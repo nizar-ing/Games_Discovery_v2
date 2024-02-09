@@ -7,12 +7,14 @@ import PlatformIconList from "./PlatformIconList.tsx";
 import CriticScore from "./CriticScore.tsx";
 import getCroppedImageUrl from "../services/image-url.ts";
 import Emoji from "./Emoji.tsx";
+import {Link} from "react-router-dom";
 
 const GameCard: React.FC<{ game: Game }> = ({
                                                 game:
                                                     {
                                                         background_image,
                                                         name,
+                                                        slug,
                                                         parent_platforms,
                                                         metacritic,
                                                         rating_top
@@ -28,7 +30,8 @@ const GameCard: React.FC<{ game: Game }> = ({
                     <CriticScore score={metacritic}/>
                 </HStack>
                 <Heading fontSize='2xl'>
-                    {name} <Emoji rating={rating_top}/>
+                    <Link to={'games/' + slug}>{name}</Link>
+                    <Emoji rating={rating_top}/>
                 </Heading>
             </CardBody>
         </Card>
