@@ -14,7 +14,7 @@ const SearchInput = () => {
             if(inputRef.current) {
                 setSearchText(inputRef.current.value);
                 navigate('/');
-            };
+            }
         }}>
             <InputGroup>
                 <InputLeftElement children={<BsSearch/>}/>
